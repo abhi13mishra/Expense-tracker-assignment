@@ -1,0 +1,36 @@
+.toggleWrapper {
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    background-color: #e7dfdf;
+    width: fit-content;
+    border-radius: 2px;
+}
+
+.toggleWrapper button {
+    border: none;
+    max-width: 200px;
+    padding: 14px 28px;
+    background-color: #e7dfdf;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.activeBtn {
+    background-color: white !important;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* mobile */
+
+@media (max-width: 768px) {
+
+    .toggleWrapper button {
+        padding: 12px 20px;
+    }
+}

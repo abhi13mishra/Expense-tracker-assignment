@@ -8,38 +8,6 @@
     padding-bottom: 120px;
 }
 
-/* Header */
-
-.header {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-}
-
-.leftHeader {
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-}
-
-.menuIcon {
-    font-size: 20px;
-
-    color: #222;
-}
-
-.heading {
-    font-size: 28px;
-
-    font-weight: 500;
-
-    color: #111;
-}
-
 .profile {
     width: 42px;
 
@@ -156,10 +124,6 @@
         padding: 20px;
 
         padding-bottom: 100px;
-    }
-
-    .heading {
-        font-size: 20px;
     }
 
     .searchBar input {

@@ -1,0 +1,55 @@
+.header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.leftHeader {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+.menuIcon {
+    font-size: 20px;
+
+    color: #222;
+
+    cursor: pointer;
+}
+
+.heading {
+    font-size: 28px;
+
+    font-weight: 500;
+
+    color: #111;
+}
+
+.profile {
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 12px;
+
+    object-fit: cover;
+}
+
+/* mobile */
+
+@media (max-width: 768px) {
+    .heading {
+        font-size: 20px;
+    }
+
+    .profile {
+        width: 36px;
+
+        height: 36px;
+    }
+}

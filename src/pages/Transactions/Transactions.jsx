@@ -1,29 +1,14 @@
 import styles from "./Transactions.module.css";
 
 import TransactionCard from "../../components/TransactionCard/TransactionCard";
+import Header from "../../components/Header/Header";
 
 const Transactions = () => {
     return (
         <div className={styles.container}>
             {/* Header */}
 
-            <div className={styles.header}>
-                <div className={styles.leftHeader}>
-                    <span className={styles.menuIcon}>
-                        ☰
-                    </span>
-
-                    <h1 className={styles.heading}>
-                        Financial Serenity
-                    </h1>
-                </div>
-
-                <img
-                    className={styles.profile}
-                    src="https://i.pravatar.cc/100"
-                    alt="profile"
-                />
-            </div>
+            <Header title="Financial Serenity" />
 
             {/* Search */}
 
