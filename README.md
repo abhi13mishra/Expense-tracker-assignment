@@ -1,16 +1,74 @@
-# React + Vite
+# Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive Expense Tracker application built using React, Context API, and CSS Modules.
 
-Currently, two official plugins are available:
+The application helps users manage their income and expenses with a clean UI, real-time balance calculations, categorized transactions, and persistent local storage support.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+# Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Dashboard
+- Dynamic total balance calculation
+- Real-time income and expense summary
+- Recent transactions section
+- Responsive layout for desktop, tablet, and mobile
 
-## Expanding the ESLint configuration
+## Add Transaction
+- Add expense and income transactions
+- Dynamic category switching
+- Category selection with icons
+- Real-time state updates
+- LocalStorage persistence
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## State Management
+- Global state using Context API
+- Shared transaction data across pages
+
+## UI / UX
+- Responsive design
+- Reusable component architecture
+- CSS Modules for scoped styling
+- Smooth and clean finance app inspired interface
+
+---
+
+# Tech Stack
+
+- React
+- Vite
+- Context API
+- CSS Modules
+- React Icons
+- LocalStorage
+
+---
+
+# Folder Structure
+
+src/
+│
+├── components/
+│   ├── Header/
+│   ├── BalanceCard/
+|   ├── categories/
+│   ├── TransactionCard/
+│   ├── TransactionToggle/
+│   ├── AmountInput/
+│   └── CategoryGrid/
+│
+├── pages/
+│   ├── Dashboard/
+│   ├── Transactions/
+│   ├── AddTransaction/
+│   └── Analytics/
+│
+├── context/
+│   └── TransactionContext.jsx
+│
+├── data/
+│   ├── data.js
+│
+│-main.css
+├── App.jsx
+└── main.jsx
