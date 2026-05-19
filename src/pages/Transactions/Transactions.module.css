@@ -1,0 +1,174 @@
+.container {
+    min-height: 100vh;
+
+    background-color: #f6f6f6;
+
+    padding: 40px 80px;
+
+    padding-bottom: 120px;
+}
+
+/* Header */
+
+.header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.leftHeader {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+.menuIcon {
+    font-size: 20px;
+
+    color: #222;
+}
+
+.heading {
+    font-size: 28px;
+
+    font-weight: 500;
+
+    color: #111;
+}
+
+.profile {
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 12px;
+
+    object-fit: cover;
+}
+
+/* Search */
+
+.searchBar {
+    margin-top: 34px;
+}
+
+.searchBar input {
+    width: 100%;
+
+    padding: 18px;
+
+    border: none;
+
+    background-color: #efefef;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+/* Filters */
+
+.filters {
+    margin-top: 24px;
+
+    display: flex;
+
+    gap: 12px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+.filters::-webkit-scrollbar {
+    display: none;
+}
+
+.filters button {
+    border: none;
+    border-radius: 8px;
+
+    padding: 10px 18px;
+
+    background-color: #e8e8e8;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+}
+
+.active {
+    background-color: black !important;
+
+    color: white;
+}
+
+/* Sections */
+
+.section {
+    margin-top: 34px;
+}
+
+.section h2 {
+    font-size: 16px;
+
+    font-weight: 500;
+
+    color: #444;
+}
+
+/* List */
+
+.list {
+    margin-top: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+/* tablet */
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 32px 40px;
+    }
+
+    .filters {
+        gap: 10px;
+    }
+}
+
+/* mobile */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+
+        padding-bottom: 100px;
+    }
+
+    .heading {
+        font-size: 20px;
+    }
+
+    .searchBar input {
+        padding: 14px;
+    }
+
+    .filters button {
+        font-size: 11px;
+
+        padding: 8px 14px;
+    }
+}

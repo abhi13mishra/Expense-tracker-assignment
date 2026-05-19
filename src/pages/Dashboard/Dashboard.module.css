@@ -1,0 +1,246 @@
+.container {
+    min-height: 100vh;
+
+    background-color: #f6f6f6;
+
+    padding: 40px 80px;
+
+    padding-bottom: 120px;
+}
+
+/* Header */
+
+.header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.leftHeader {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+.menuIcon {
+    font-size: 20px;
+
+    color: #222;
+
+    cursor: pointer;
+}
+
+.heading {
+    font-size: 28px;
+
+    font-weight: 500;
+
+    color: #111;
+}
+
+.profile {
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 12px;
+
+    object-fit: cover;
+}
+
+/* Income Expense */
+
+.cardWrapper {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+
+    margin-top: 42px;
+}
+
+.incomeCard,
+.expenseCard {
+    background-color: white;
+
+    padding: 30px;
+
+    border: 1px solid #ececec;
+}
+
+.incomeCard p,
+.expenseCard p {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #888;
+}
+
+.incomeCard h3,
+.expenseCard h3 {
+    margin-top: 10px;
+
+    font-size: 20px;
+
+    font-weight: 400;
+
+    color: #111;
+}
+
+/* Analytics Banner */
+
+.analyticsBanner {
+    margin-top: 34px;
+
+    background: linear-gradient(90deg,
+            #111,
+            #1a1a1a);
+
+    padding: 30px;
+
+    color: white;
+
+    border-radius: 4px;
+}
+
+.analyticsBanner h2 {
+    font-size: 28px;
+
+    font-weight: 400;
+}
+
+.analyticsBanner p {
+    margin-top: 10px;
+
+    color: #cfcfcf;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+/* Recent Header */
+
+.recentHeader {
+    margin-top: 40px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.recentHeader h2 {
+    font-size: 30px;
+
+    font-weight: 400;
+
+    color: #111;
+}
+
+.recentHeader span {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #555;
+
+    cursor: pointer;
+}
+
+/* Transactions */
+
+.transactionList {
+    margin-top: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+/* tablet */
+@media (max-width: 1024px) {
+    .container {
+        padding: 32px 40px;
+
+        padding-bottom: 110px;
+    }
+
+    .heading {
+        font-size: 24px;
+    }
+
+    .cardWrapper {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 14px;
+    }
+
+    .recentHeader h2 {
+        font-size: 24px;
+    }
+
+    .analyticsBanner h2 {
+        font-size: 22px;
+    }
+}
+
+/* mobile */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+
+        padding-bottom: 100px;
+    }
+
+    .header {
+        align-items: flex-start;
+    }
+
+    .heading {
+        font-size: 20px;
+    }
+
+    .profile {
+        width: 36px;
+
+        height: 36px;
+    }
+
+    .cardWrapper {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 12px;
+    }
+
+    .incomeCard,
+    .expenseCard {
+        padding: 22px;
+    }
+
+    .analyticsBanner {
+        padding: 24px;
+    }
+
+    .analyticsBanner h2 {
+        font-size: 20px;
+    }
+
+    .recentHeader h2 {
+        font-size: 22px;
+    }
+}

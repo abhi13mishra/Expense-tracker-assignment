@@ -1,0 +1,404 @@
+.container {
+    min-height: 100vh;
+
+    background-color: #f6f6f6;
+
+    padding: 40px 80px;
+
+    padding-bottom: 120px;
+}
+
+/* Header */
+
+.header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.leftHeader {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+.menuIcon {
+    font-size: 20px;
+}
+
+.heading {
+    font-size: 28px;
+
+    font-weight: 500;
+}
+
+.profile {
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 12px;
+
+    object-fit: cover;
+}
+
+/* Month */
+
+.monthSection {
+    margin-top: 50px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.monthSection button {
+    border: none;
+
+    background: transparent;
+
+    font-size: 24px;
+
+    cursor: pointer;
+}
+
+.monthSection p {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #777;
+
+    text-align: center;
+}
+
+.monthSection h2 {
+    margin-top: 10px;
+
+    font-size: 28px;
+
+    font-weight: 400;
+
+    text-align: center;
+}
+
+/* Total */
+
+.totalCard {
+    margin-top: 40px;
+
+    background-color: white;
+
+    padding: 28px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    position: relative;
+}
+
+.leftBorder {
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 4px;
+
+    height: 100%;
+
+    background-color: black;
+}
+
+.totalCard p {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #777;
+}
+
+.totalCard h2 {
+    margin-top: 12px;
+
+    font-size: 44px;
+
+    font-weight: 400;
+}
+
+.totalCard span {
+    font-size: 14px;
+
+    color: #777;
+}
+
+/* Breakdown */
+
+.breakdownSection {
+    margin-top: 36px;
+
+    display: grid;
+
+    grid-template-columns: 1.2fr 1fr;
+
+    gap: 24px;
+}
+
+/* Chart */
+
+.chartCard {
+    background-color: white;
+
+    padding: 28px;
+}
+
+.chartCard p {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #777;
+}
+
+.circle {
+    margin: 60px auto;
+
+    width: 220px;
+
+    height: 220px;
+
+    border-radius: 50%;
+
+    border: 18px solid #e5e5e5;
+
+    border-top-color: black;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.circle h2 {
+    font-size: 42px;
+
+    font-weight: 400;
+}
+
+.circle span {
+    margin-top: 8px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    color: #777;
+}
+
+/* Category List */
+
+.categoryList {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.categoryItem {
+    background-color: white;
+
+    padding: 22px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.categoryItem div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.categoryItem p {
+    font-weight: 500;
+}
+
+/* Color Dots */
+
+.black,
+.green,
+.gray,
+.light {
+    width: 14px;
+
+    height: 14px;
+
+    display: inline-block;
+}
+
+.black {
+    background-color: black;
+}
+
+.green {
+    background-color: #556b56;
+}
+
+.gray {
+    background-color: gray;
+}
+
+.light {
+    background-color: #ccc;
+}
+
+/* Button */
+
+.reportBtn {
+    margin-top: 12px;
+
+    background-color: black;
+
+    color: white;
+
+    border: none;
+
+    padding: 20px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+/* Trend */
+
+.trendSection {
+    margin-top: 50px;
+}
+
+.trendSection p {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #777;
+}
+
+.trendBox {
+    margin-top: 24px;
+
+    background-color: white;
+
+    height: 220px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-around;
+
+    padding: 30px;
+}
+
+.trendBox div {
+    font-size: 12px;
+
+    color: #777;
+}
+
+.activeMonth {
+    color: black !important;
+
+    font-weight: 700;
+}
+
+/* tablet */
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 32px 40px;
+    }
+
+    .breakdownSection {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .circle {
+        width: 180px;
+
+        height: 180px;
+    }
+
+    .totalCard {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 18px;
+    }
+}
+
+/* mobile */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+
+        padding-bottom: 100px;
+    }
+
+    .heading {
+        font-size: 20px;
+    }
+
+    .monthSection h2 {
+        font-size: 20px;
+    }
+
+    .totalCard {
+        padding: 20px;
+    }
+
+    .totalCard h2 {
+        font-size: 30px;
+    }
+
+    .circle {
+        width: 150px;
+
+        height: 150px;
+
+        border-width: 14px;
+    }
+
+    .circle h2 {
+        font-size: 28px;
+    }
+
+    .trendBox {
+        overflow-x: auto;
+
+        gap: 20px;
+    }
+}

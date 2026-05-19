@@ -1,0 +1,39 @@
+.card {
+    background-color: white;
+
+    padding: 18px;
+
+    border-radius: 2px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+    font-size: 16px;
+}
+
+.card p {
+    margin-top: 4px;
+
+    color: gray;
+
+    font-size: 14px;
+}
+
+.income {
+    color: #00a86b;
+
+    font-weight: 700;
+}
+
+.expense {
+    color: #fd3c4a;
+
+    font-weight: 700;
+}
