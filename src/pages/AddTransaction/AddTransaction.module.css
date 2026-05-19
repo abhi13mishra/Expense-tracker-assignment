@@ -69,6 +69,13 @@
     cursor: pointer;
 }
 
+.error {
+    margin-top: 20px;
+    color: red;
+    font-size: 14px;
+    text-align: center;
+}
+
 /* tablet */
 
 @media (max-width: 1024px) {

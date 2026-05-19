@@ -16,6 +16,8 @@ const AddTransaction = () => {
 
     const [note, setNote] = useState("");
 
+    const [error, setError] = useState("");
+
     const [date, setDate] = useState("");
 
     const [selectedCategory, setSelectedCategory] = useState("Food");
@@ -23,11 +25,21 @@ const AddTransaction = () => {
     // SAVE TRANSACTION
 
     const saveTransaction = () => {
+
         if (
             !amount ||
             !note ||
             !date
-        ) return;
+        ) {
+
+            setError(
+                "Please fill all fields"
+            );
+
+            return;
+        }
+
+        setError("");
 
         const newTransaction = {
             id: Date.now(),
@@ -39,8 +51,6 @@ const AddTransaction = () => {
         };
 
         addTransaction(newTransaction);
-
-        // RESET
 
         setAmount("");
         setNote("");
@@ -128,6 +138,10 @@ const AddTransaction = () => {
                     alt="Expense"
                 />
             </div>
+
+            {/* error */}
+
+            {error && <p className={styles.error}>{error}</p>}
 
             {/* Button */}
 
