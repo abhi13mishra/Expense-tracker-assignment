@@ -1,6 +1,18 @@
 import styles from "./TransactionCard.module.css";
-import { MdDelete, MdEdit } from "react-icons/md";
+
+import {
+    MdDelete,
+    MdEdit,
+    MdRestaurant,
+    MdFlight,
+    MdShoppingBag,
+    MdAttachMoney,
+    MdReceipt,
+    MdFavorite,
+} from "react-icons/md";
+
 import { useNavigate } from "react-router-dom";
+
 import { useContext } from "react";
 
 import { TransactionContext } from "../../context/TransactionContext";
@@ -21,19 +33,54 @@ const TransactionCard = ({
         TransactionContext
     );
 
+    const getCategoryIcon = () => {
+
+        switch (category) {
+
+            case "Food":
+                return <MdRestaurant />;
+
+            case "Travel":
+                return <MdFlight />;
+
+            case "Shopping":
+                return <MdShoppingBag />;
+
+            case "Salary":
+                return <MdAttachMoney />;
+
+            case "Bills":
+                return <MdReceipt />;
+
+            default:
+                return <MdFavorite />;
+        }
+    };
+
     return (
         <div className={styles.card}>
-            <div>
-                <h3>{title}</h3>
-                <p>{category}</p>
+
+            <div className={styles.leftSection}>
+
+                <div className={styles.iconBox}>
+                    {getCategoryIcon()}
+                </div>
+
+                <div>
+                    <h3>{title}</h3>
+                    <p>{category}</p>
+                </div>
+
             </div>
 
             <div className={styles.rightSection}>
-                <span className={
-                    type === "income"
-                        ? styles.income
-                        : styles.expense
-                }
+
+                <span
+                    className={
+                        type === "income"
+                            ? styles.income
+                            : styles.expense
+                    }
                 >
 
                     {
@@ -41,13 +88,18 @@ const TransactionCard = ({
                             ? "+"
                             : "-"
                     }
+
                     ₹ {amount}
+
                 </span>
 
                 <div className={styles.actions}>
+
                     <button
                         className={styles.editBtn}
+
                         onClick={() => {
+
                             setEditTransaction({
                                 id,
                                 title,
@@ -56,26 +108,36 @@ const TransactionCard = ({
                                 type,
                                 date,
                             });
+
                             navigate("/add");
                         }}
                     >
+
                         <MdEdit size={18} />
+
                     </button>
 
                     {
                         deleteTransaction && (
+
                             <button
                                 className={styles.deleteBtn}
+
                                 onClick={() =>
                                     deleteTransaction(id)
                                 }
                             >
+
                                 <MdDelete size={18} />
+
                             </button>
                         )
                     }
+
                 </div>
+
             </div>
+
         </div>
     );
 };

@@ -11,14 +11,14 @@
 .categoryGrid {
     margin-top: 24px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(10, 110px);
+    justify-content: start;
+    gap: 22px;
 }
 
 .category,
 .activeCategory {
-    height: 82px;
-    background-color: white;
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,13 +26,29 @@
     gap: 8px;
     font-size: 11px;
     text-transform: uppercase;
-    border-radius: 12px;
     cursor: pointer;
 }
 
-.activeCategory {
+.category svg,
+.activeCategory svg {
+    width: 68px;
+    height: 52px;
+    background-color: white;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+.activeCategory svg {
     background-color: black;
     color: white;
+}
+
+.category span,
+.activeCategory span {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    margin-top: -2px;
 }
 
 /* mobile */
@@ -40,12 +56,21 @@
 @media (max-width: 768px) {
 
     .categoryGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
     }
 
-    .category,
-    .activeCategory {
-        height: 76px;
+    .category svg,
+    .activeCategory svg {
+        width: 46px;
+        height: 46px;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+
+    .category span,
+    .activeCategory span {
+        font-size: 9px;
     }
 }

@@ -1,20 +1,14 @@
 .container {
     min-height: 100vh;
-
     background-color: #f6f6f6;
-
     padding: 40px 80px;
-
     padding-bottom: 120px;
 }
 
 .profile {
     width: 42px;
-
     height: 42px;
-
     border-radius: 12px;
-
     object-fit: cover;
 }
 
@@ -30,27 +24,53 @@
 .incomeCard,
 .expenseCard {
     background-color: white;
-    padding: 30px;
+    padding: 22px 28px;
     border: 1px solid #ececec;
+}
+
+.cardLeft {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.iconWrapper {
+    width: 38px;
+    height: 38px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #444;
+    flex-shrink: 0;
 }
 
 .incomeCard p,
 .expenseCard p {
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-
-    color: #888;
+    color: #555;
+    font-weight: 500;
+    line-height: 1;
 }
 
 .incomeCard h3,
 .expenseCard h3 {
-    margin-top: 10px;
+    margin: 6px 0 0;
     font-size: 20px;
     font-weight: 400;
     color: #111;
+    line-height: 1;
 }
 
 /* Analytics Banner */
@@ -109,7 +129,7 @@
 .viewAll {
     cursor: pointer;
     font-weight: 600;
-    color: rgb(101, 101, 153);
+    color: #666;
 }
 
 .emptyState {
@@ -122,7 +142,9 @@
 }
 
 /* tablet */
+
 @media (max-width: 1024px) {
+
     .container {
         padding: 32px 40px;
         padding-bottom: 110px;
@@ -149,29 +171,45 @@
 /* mobile */
 
 @media (max-width: 768px) {
+
     .container {
         padding: 20px;
-
         padding-bottom: 100px;
     }
 
     .profile {
         width: 36px;
-
         height: 36px;
     }
 
     .cardWrapper {
-        display: grid;
-
         grid-template-columns: 1fr 1fr;
-
         gap: 12px;
     }
 
     .incomeCard,
     .expenseCard {
-        padding: 22px;
+        padding: 18px;
+    }
+
+    .iconWrapper {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+    }
+
+    .cardLeft {
+        gap: 10px;
+    }
+
+    .incomeCard p,
+    .expenseCard p {
+        font-size: 10px;
+    }
+
+    .incomeCard h3,
+    .expenseCard h3 {
+        font-size: 18px;
     }
 
     .analyticsBanner {
@@ -188,9 +226,5 @@
 
     .viewAll {
         font-size: 14px;
-        cursor: pointer;
-        font-weight: 600;
-        color: rgb(101, 101, 153);
     }
-
 }

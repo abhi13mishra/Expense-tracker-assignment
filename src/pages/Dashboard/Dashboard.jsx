@@ -1,12 +1,24 @@
 import { useContext } from "react";
+
+import {
+    MdArrowDownward,
+    MdArrowUpward,
+} from "react-icons/md";
+
 import styles from "./Dashboard.module.css";
+
 import Header from "../../components/CommonComponents/Header/Header";
+
 import BalanceCard from "../../components/DashboardComponents/BalanceCard/BalanceCard";
+
 import TransactionCard from "../../components/TransactionCard/TransactionCard";
+
 import { TransactionContext } from "../../context/TransactionContext";
+
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+
     const navigate = useNavigate();
 
     const { transactions } = useContext(TransactionContext);
@@ -54,15 +66,43 @@ const Dashboard = () => {
             <div className={styles.cardWrapper}>
 
                 <div className={styles.incomeCard}>
-                    <p>Income</p>
 
-                    <h3>${income}</h3>
+                    <div className={styles.cardLeft}>
+
+                        <div className={styles.iconWrapper}>
+                            <MdArrowDownward />
+                        </div>
+
+                        <div className={styles.cardInfo}>
+
+                            <p>Income</p>
+
+                            <h3>${income}</h3>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
                 <div className={styles.expenseCard}>
-                    <p>Expenses</p>
 
-                    <h3>${expense}</h3>
+                    <div className={styles.cardLeft}>
+
+                        <div className={styles.iconWrapper}>
+                            <MdArrowUpward />
+                        </div>
+
+                        <div className={styles.cardInfo}>
+
+                            <p>Expenses</p>
+
+                            <h3>${expense}</h3>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
@@ -86,7 +126,9 @@ const Dashboard = () => {
 
                 <h2>Recent Activity</h2>
 
-                <p className={styles.viewAll}
+                <p
+                    className={styles.viewAll}
+
                     onClick={() =>
                         navigate("/transactions")
                     }
@@ -137,6 +179,7 @@ const Dashboard = () => {
                 }
 
             </div>
+
         </div>
     );
 };

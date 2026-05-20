@@ -8,6 +8,8 @@ import Header from "../../components/CommonComponents/Header/Header";
 
 import { TransactionContext } from "../../context/TransactionContext";
 
+import { FiSearch } from "react-icons/fi";
+
 const Transactions = () => {
     const { transactions, deleteTransaction } = useContext(TransactionContext);
 
@@ -56,16 +58,24 @@ const Transactions = () => {
 
             <div className={styles.searchBar}>
 
+                <FiSearch
+                    className={styles.searchIcon}
+                />
+
                 <input
                     type="text"
+
                     placeholder="Search transactions"
+
                     value={search}
+
                     onChange={(e) =>
                         setSearch(
                             e.target.value
                         )
                     }
                 />
+
             </div>
 
             {/* Filters */}

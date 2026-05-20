@@ -21,20 +21,25 @@
 /* Search */
 
 .searchBar {
-    margin-top: 34px;
+    margin-top: 40px;
+    position: relative;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #777;
 }
 
 .searchBar input {
     width: 100%;
-
-    padding: 18px;
-
+    padding: 18px 18px 18px 50px;
     border: none;
-
     background-color: #efefef;
-
     font-size: 14px;
-
     outline: none;
 }
 
@@ -105,15 +110,7 @@
     gap: 2px;
 }
 
-.emptyState {
-    margin-top: 30px;
-    background-color: white;
-    padding: 50px 20px;
-    text-align: center;
-    border-radius: 12px;
-    color: #777;
-    font-size: 18px;
-}
+
 
 /* tablet */
 
