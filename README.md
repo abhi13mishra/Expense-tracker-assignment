@@ -1,74 +1,36 @@
-# Expense Tracker
+# Expense Tracker App
 
-A modern and responsive Expense Tracker application built using React, Context API, and CSS Modules.
+A modern and responsive Expense Tracker application built using React, Context API, and Recharts.
 
-The application helps users manage their income and expenses with a clean UI, real-time balance calculations, categorized transactions, and persistent local storage support.
+## Features
 
----
+- Add Transactions
+- Edit Transactions
+- Delete Transactions
+- Expense & Income Toggle
+- Search Transactions
+- Category Filters
+- Transactions Grouped By Date
+- Real-time Balance Calculation
+- Analytics Dashboard
+- Donut / Pie Chart Breakdown
+- 6-Month Expense Trend
+- Dynamic Month Navigation
+- localStorage Persistence
+- Responsive Design
+- Empty States Handling
 
-# Features
-
-## Dashboard
-- Dynamic total balance calculation
-- Real-time income and expense summary
-- Recent transactions section
-- Responsive layout for desktop, tablet, and mobile
-
-## Add Transaction
-- Add expense and income transactions
-- Dynamic category switching
-- Category selection with icons
-- Real-time state updates
-- LocalStorage persistence
-
-## State Management
-- Global state using Context API
-- Shared transaction data across pages
-
-## UI / UX
-- Responsive design
-- Reusable component architecture
-- CSS Modules for scoped styling
-- Smooth and clean finance app inspired interface
-
----
-
-# Tech Stack
+## Tech Stack
 
 - React
-- Vite
 - Context API
 - CSS Modules
-- React Icons
-- LocalStorage
+- React Router DOM
+- Recharts
+- Vite
 
----
+## Installation
 
-# Folder Structure
-
-src/
-│
-├── components/
-│   ├── Header/
-│   ├── BalanceCard/
-|   ├── categories/
-│   ├── TransactionCard/
-│   ├── TransactionToggle/
-│   ├── AmountInput/
-│   └── CategoryGrid/
-│
-├── pages/
-│   ├── Dashboard/
-│   ├── Transactions/
-│   ├── AddTransaction/
-│   └── Analytics/
-│
-├── context/
-│   └── TransactionContext.jsx
-│
-├── data/
-│   ├── data.js
-│
-│-main.css
-├── App.jsx
-└── main.jsx
+```bash
+npm install
+npm run dev

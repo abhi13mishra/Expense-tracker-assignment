@@ -52,3 +52,19 @@
     align-items: center;
     justify-content: center;
 }
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.editBtn,
+.deleteBtn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

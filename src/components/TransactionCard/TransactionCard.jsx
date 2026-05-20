@@ -1,5 +1,9 @@
 import styles from "./TransactionCard.module.css";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
+import { TransactionContext } from "../../context/TransactionContext";
 
 const TransactionCard = ({
     title,
@@ -8,51 +12,70 @@ const TransactionCard = ({
     type,
     deleteTransaction,
     id,
+    date,
 }) => {
+
+    const navigate = useNavigate();
+
+    const { setEditTransaction } = useContext(
+        TransactionContext
+    );
 
     return (
         <div className={styles.card}>
-
             <div>
                 <h3>{title}</h3>
                 <p>{category}</p>
             </div>
 
             <div className={styles.rightSection}>
-
-                <span
-                    className={
-                        type === "income"
-                            ? styles.income
-                            : styles.expense
-                    }
+                <span className={
+                    type === "income"
+                        ? styles.income
+                        : styles.expense
+                }
                 >
 
-                    {type === "income"
-                        ? "+"
-                        : "-"}
-
+                    {
+                        type === "income"
+                            ? "+"
+                            : "-"
+                    }
                     ₹ {amount}
-
                 </span>
 
-                {deleteTransaction && (
-
+                <div className={styles.actions}>
                     <button
-                        className={styles.deleteBtn}
-
-                        onClick={() =>
-                            deleteTransaction(id)
-                        }
+                        className={styles.editBtn}
+                        onClick={() => {
+                            setEditTransaction({
+                                id,
+                                title,
+                                category,
+                                amount,
+                                type,
+                                date,
+                            });
+                            navigate("/add");
+                        }}
                     >
-
-                        <MdDelete size={18} />
-
+                        <MdEdit size={18} />
                     </button>
-                )}
 
+                    {
+                        deleteTransaction && (
+                            <button
+                                className={styles.deleteBtn}
+                                onClick={() =>
+                                    deleteTransaction(id)
+                                }
+                            >
+                                <MdDelete size={18} />
+                            </button>
+                        )
+                    }
+                </div>
             </div>
-
         </div>
     );
 };

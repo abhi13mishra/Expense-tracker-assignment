@@ -93,56 +93,139 @@ const Transactions = () => {
 
             {/* Transactions */}
 
-            <div className={styles.section}>
-                <h2>
-                    Recent Transactions
-                </h2>
+            {/* Transactions */}
 
-                <div className={styles.list}>
-                    {
-                        filteredTransactions.length > 0 ? (
-                            filteredTransactions.map(
-                                (item) => (
+            {
+                filteredTransactions.length > 0 ? (
 
-                                    <TransactionCard
-                                        key={item.id}
-                                        id={item.id}
-                                        title={
-                                            item.title
-                                        }
+                    Object.entries(
 
-                                        category={
-                                            item.category
-                                        }
+                        filteredTransactions.reduce(
+                            (groups, item) => {
 
-                                        amount={
-                                            item.amount
-                                        }
+                                const today =
+                                    new Date();
 
-                                        type={
-                                            item.type
-                                        }
+                                const yesterday =
+                                    new Date();
 
-                                        deleteTransaction={
-                                            deleteTransaction
-                                        }
-                                    />
-                                )
-                            )
+                                yesterday.setDate(
+                                    today.getDate() - 1
+                                );
 
-                        ) : (
+                                const itemDate =
+                                    new Date(item.date);
 
-                            <p
+                                let groupLabel = "";
+
+                                if (
+                                    itemDate
+                                        .toDateString()
+                                    ===
+                                    today.toDateString()
+                                ) {
+
+                                    groupLabel =
+                                        "Today";
+
+                                } else if (
+
+                                    itemDate
+                                        .toDateString()
+
+                                    ===
+
+                                    yesterday
+                                        .toDateString()
+
+                                ) {
+
+                                    groupLabel =
+                                        "Yesterday";
+
+                                } else {
+
+                                    groupLabel =
+                                        itemDate
+                                            .toLocaleDateString(
+                                                "default",
+                                                {
+                                                    day: "numeric",
+                                                    month: "long",
+                                                    year: "numeric",
+                                                }
+                                            );
+                                }
+
+                                if (
+                                    !groups[groupLabel]
+                                ) {
+
+                                    groups[groupLabel]
+                                        = [];
+                                }
+
+                                groups[groupLabel]
+                                    .push(item);
+
+                                return groups;
+
+                            }, {})
+                    ).map(([date, items]) => (
+
+                        <div
+                            key={date}
+
+                            className={
+                                styles.section
+                            }
+                        >
+
+                            <h2>{date}</h2>
+
+                            <div
                                 className={
-                                    styles.empty
+                                    styles.list
                                 }
                             >
-                                No Transactions Found
-                            </p>
-                        )
-                    }
-                </div>
-            </div>
+
+                                {
+                                    items.map((item) => (
+
+                                        <TransactionCard
+                                            key={item.id}
+
+                                            id={item.id}
+
+                                            date={item.date}
+
+                                            title={item.title}
+
+                                            category={item.category}
+
+                                            amount={item.amount}
+
+                                            type={item.type}
+
+                                            deleteTransaction={
+                                                deleteTransaction
+                                            }
+                                        />
+                                    ))
+                                }
+
+                            </div>
+
+                        </div>
+                    ))
+
+                ) : (
+
+                    <div className={styles.emptyState}>
+                        No Transactions Found
+                    </div>
+                )
+            }
         </div>
     );
 };

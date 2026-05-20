@@ -1,20 +1,15 @@
 import { useContext } from "react";
-
 import styles from "./Dashboard.module.css";
-
 import Header from "../../components/CommonComponents/Header/Header";
-
 import BalanceCard from "../../components/DashboardComponents/BalanceCard/BalanceCard";
-
 import TransactionCard from "../../components/TransactionCard/TransactionCard";
-
-import { TransactionContext }
-    from "../../context/TransactionContext";
+import { TransactionContext } from "../../context/TransactionContext";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+    const navigate = useNavigate();
 
-    const { transactions } =
-        useContext(TransactionContext);
+    const { transactions } = useContext(TransactionContext);
 
     // Income
 
@@ -91,7 +86,13 @@ const Dashboard = () => {
 
                 <h2>Recent Activity</h2>
 
-                <span>VIEW ALL</span>
+                <p className={styles.viewAll}
+                    onClick={() =>
+                        navigate("/transactions")
+                    }
+                >
+                    VIEW ALL
+                </p>
 
             </div>
 
@@ -106,10 +107,18 @@ const Dashboard = () => {
 
                             <TransactionCard
                                 key={item.id}
+
+                                id={item.id}
+
                                 title={item.title}
+
                                 category={item.category}
+
                                 amount={item.amount}
+
                                 type={item.type}
+
+                                date={item.date}
                             />
                         ))
 
