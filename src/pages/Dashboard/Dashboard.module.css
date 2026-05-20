@@ -135,6 +135,15 @@
     gap: 2px;
 }
 
+.emptyState {
+    margin-top: 20px;
+    background-color: white;
+    padding: 40px 20px;
+    text-align: center;
+    color: #777;
+    border-radius: 12px;
+}
+
 /* tablet */
 @media (max-width: 1024px) {
     .container {

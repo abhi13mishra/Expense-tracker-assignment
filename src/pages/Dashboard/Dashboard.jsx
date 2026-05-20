@@ -99,17 +99,33 @@ const Dashboard = () => {
 
             <div className={styles.transactionList}>
 
-                {transactions.map((item) => (
+                {
+                    transactions.length > 0 ? (
 
-                    <TransactionCard
-                        key={item.id}
-                        title={item.title}
-                        category={item.category}
-                        amount={item.amount}
-                        type={item.type}
-                    />
+                        transactions.map((item) => (
 
-                ))}
+                            <TransactionCard
+                                key={item.id}
+                                title={item.title}
+                                category={item.category}
+                                amount={item.amount}
+                                type={item.type}
+                            />
+                        ))
+
+                    ) : (
+
+                        <div
+                            className={
+                                styles.emptyState
+                            }
+                        >
+
+                            No Transactions Yet
+
+                        </div>
+                    )
+                }
 
             </div>
         </div>
