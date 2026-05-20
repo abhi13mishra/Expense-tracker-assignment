@@ -1,20 +1,14 @@
 .container {
     min-height: 100vh;
-
     background-color: #f6f6f6;
-
     padding: 40px 80px;
-
     padding-bottom: 120px;
 }
 
 .profile {
     width: 42px;
-
     height: 42px;
-
     border-radius: 12px;
-
     object-fit: cover;
 }
 
@@ -47,13 +41,9 @@
 
 .filters {
     margin-top: 24px;
-
     display: flex;
-
     gap: 12px;
-
     overflow-x: auto;
-
     scrollbar-width: none;
 }
 
@@ -64,27 +54,21 @@
 .filters button {
     border: none;
     border-radius: 8px;
-
     padding: 10px 18px;
-
     background-color: #e8e8e8;
-
     font-size: 12px;
-
     letter-spacing: 1px;
-
     cursor: pointer;
-
     white-space: nowrap;
 }
 
 .active {
     background-color: black !important;
-
     color: white;
 }
 
 /* emptyState */
+
 .emptyState {
     margin-top: 30px;
     background-color: white;
@@ -103,9 +87,7 @@
 
 .section h2 {
     font-size: 16px;
-
     font-weight: 500;
-
     color: #444;
 }
 
@@ -113,19 +95,15 @@
 
 .list {
     margin-top: 18px;
-
     display: flex;
-
     flex-direction: column;
-
     gap: 2px;
 }
-
-
 
 /* tablet */
 
 @media (max-width: 1024px) {
+
     .container {
         padding: 32px 40px;
     }
@@ -138,19 +116,24 @@
 /* mobile */
 
 @media (max-width: 768px) {
+
     .container {
         padding: 20px;
-
         padding-bottom: 100px;
     }
 
+    .searchIcon {
+        left: 16px;
+        font-size: 16px;
+    }
+
     .searchBar input {
-        padding: 14px;
+        padding: 14px 14px 14px 44px;
+        font-size: 13px;
     }
 
     .filters button {
         font-size: 11px;
-
         padding: 8px 14px;
     }
 }
