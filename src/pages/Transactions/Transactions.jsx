@@ -1,112 +1,146 @@
+import { useContext, useState } from "react";
+
 import styles from "./Transactions.module.css";
 
 import TransactionCard from "../../components/TransactionCard/TransactionCard";
-import Header from "../../components/Header/Header";
+
+import Header from "../../components/CommonComponents/Header/Header";
+
+import { TransactionContext } from "../../context/TransactionContext";
 
 const Transactions = () => {
+    const { transactions, deleteTransaction } = useContext(TransactionContext);
+
+    const [search, setSearch] = useState("");
+
+    const [activeFilter, setActiveFilter] = useState("All");
+
+    // FILTERED TRANSACTIONS
+
+    const filteredTransactions = transactions.filter((item) => {
+        const matchesSearch =
+            item.title
+                .toLowerCase()
+                .includes(
+                    search.toLowerCase()
+                );
+
+        const matchesCategory = activeFilter === "All"
+            ? true
+            : item.category === activeFilter;
+
+        return (
+            matchesSearch && matchesCategory
+        );
+    });
+
+    // FILTER BUTTONS
+
+    const filters = [
+        "All",
+        "Food",
+        "Travel",
+        "Bills",
+        "Shopping",
+        "Health",
+    ];
+
     return (
         <div className={styles.container}>
+
             {/* Header */}
 
-            <Header title="Financial Serenity" />
+            <Header title="Transactions" />
 
             {/* Search */}
 
             <div className={styles.searchBar}>
+
                 <input
                     type="text"
                     placeholder="Search transactions"
+                    value={search}
+                    onChange={(e) =>
+                        setSearch(
+                            e.target.value
+                        )
+                    }
                 />
             </div>
 
             {/* Filters */}
 
             <div className={styles.filters}>
-                <button className={styles.active}>
-                    All
-                </button>
+                {filters.map((item) => (
+                    <button
+                        key={item}
+                        className={
+                            activeFilter === item
+                                ? styles.active
+                                : ""
+                        }
 
-                <button>Food</button>
+                        onClick={() => setActiveFilter(
+                            item
+                        )
+                        }
+                    >
+                        {item}
 
-                <button>Transport</button>
-
-                <button>Bills</button>
-
-                <button>Shopping</button>
-
-                <button>Health</button>
+                    </button>
+                ))}
             </div>
 
-            {/* Today */}
+            {/* Transactions */}
 
             <div className={styles.section}>
-                <h2>Today</h2>
+                <h2>
+                    Recent Transactions
+                </h2>
 
                 <div className={styles.list}>
-                    <TransactionCard
-                        title="Whole Foods Market"
-                        category="Groceries"
-                        amount="84.20"
-                        type="expense"
-                    />
+                    {
+                        filteredTransactions.length > 0 ? (
+                            filteredTransactions.map(
+                                (item) => (
 
-                    <TransactionCard
-                        title="Monthly Salary"
-                        category="Income"
-                        amount="4,250"
-                        type="income"
-                    />
+                                    <TransactionCard
+                                        key={item.id}
+                                        id={item.id}
+                                        title={
+                                            item.title
+                                        }
 
-                    <TransactionCard
-                        title="Uber Central"
-                        category="Transport"
-                        amount="12.50"
-                        type="expense"
-                    />
-                </div>
-            </div>
+                                        category={
+                                            item.category
+                                        }
 
-            {/* Yesterday */}
+                                        amount={
+                                            item.amount
+                                        }
 
-            <div className={styles.section}>
-                <h2>Yesterday</h2>
+                                        type={
+                                            item.type
+                                        }
 
-                <div className={styles.list}>
-                    <TransactionCard
-                        title="Blue Bottle Coffee"
-                        category="Food & Drink"
-                        amount="6.75"
-                        type="expense"
-                    />
+                                        deleteTransaction={
+                                            deleteTransaction
+                                        }
+                                    />
+                                )
+                            )
 
-                    <TransactionCard
-                        title="Verizon Wireless"
-                        category="Bills"
-                        amount="95"
-                        type="expense"
-                    />
+                        ) : (
 
-                    <TransactionCard
-                        title="Equinox Membership"
-                        category="Health"
-                        amount="180"
-                        type="expense"
-                    />
-                </div>
-            </div>
-
-            {/* Date */}
-
-            <div className={styles.section}>
-                <h2>October 24</h2>
-
-                <div className={styles.list}>
-                    <TransactionCard
-                        title="Amazon Prime"
-                        category="Shopping"
-                        amount="14.99"
-                        type="expense"
-                    />
+                            <p
+                                className={
+                                    styles.empty
+                                }
+                            >
+                                No Transactions Found
+                            </p>
+                        )
+                    }
                 </div>
             </div>
         </div>

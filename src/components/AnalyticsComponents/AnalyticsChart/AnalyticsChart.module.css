@@ -1,0 +1,16 @@
+.chartCard {
+    background-color: white;
+    padding: 28px;
+}
+
+.chartCard p {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #777;
+}
+
+.chartWrapper {
+    margin-top: 40px;
+    width: 100%;
+    height: 260px;
+}

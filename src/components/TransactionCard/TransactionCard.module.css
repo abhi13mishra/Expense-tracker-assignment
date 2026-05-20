@@ -37,3 +37,18 @@
 
     font-weight: 700;
 }
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.deleteBtn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

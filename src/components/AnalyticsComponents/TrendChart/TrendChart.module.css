@@ -1,0 +1,16 @@
+.trendSection {
+    margin-top: 50px;
+}
+
+.trendSection p {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #777;
+}
+
+.chartBox {
+    margin-top: 24px;
+    background-color: white;
+    padding: 20px;
+    height: 260px;
+}

@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import styles from "./AddTransaction.module.css";
-import Header from "../../components/Header/Header";
-import TransactionToggle from "../../components/TransactionToggle/TransactionToggle";
-import AmountInput from "../../components/AmountInput/AmountInput";
-import CategoryGrid from "../../components/CategoryGrid/CategoryGrid";
+import Header from "../../components/CommonComponents/Header/Header";
+import TransactionToggle from "../../components/AddTransactionComponents/TransactionToggle/TransactionToggle";
+import AmountInput from "../../components/AddTransactionComponents/AmountInput/AmountInput";
+import CategoryGrid from "../../components/AddTransactionComponents/CategoryGrid/CategoryGrid";
 import { TransactionContext } from "../../context/TransactionContext";
 
 const AddTransaction = () => {

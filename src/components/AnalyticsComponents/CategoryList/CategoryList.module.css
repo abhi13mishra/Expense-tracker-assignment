@@ -1,0 +1,40 @@
+.categoryList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.categoryItem {
+    background-color: white;
+    padding: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.categoryItem div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.categoryItem p {
+    font-weight: 500;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.reportBtn {
+    margin-top: 12px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}

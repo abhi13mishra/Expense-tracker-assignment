@@ -1,9 +1,201 @@
-import Header from "../../components/Header/Header";
+import { useContext, useState } from "react";
+import Header from "../../components/CommonComponents/Header/Header";
+import TotalExpenseCard from "../../components/AnalyticsComponents/TotalExpenseCard/TotalExpenseCard";
+import AnalyticsChart from "../../components/AnalyticsComponents/AnalyticsChart/AnalyticsChart";
+import CategoryList from "../../components/AnalyticsComponents/CategoryList/CategoryList";
+import TrendChart from "../../components/AnalyticsComponents/TrendChart/TrendChart";
 import styles from "./Analytics.module.css";
+import { TransactionContext } from "../../context/TransactionContext";
 
 const Analytics = () => {
+
+    const { transactions } = useContext(TransactionContext);
+
+    // CURRENT DATE
+
+    const today = new Date();
+
+    const [currentDate, setCurrentDate] =
+        useState(new Date());
+
+    const currentMonth = currentDate.toLocaleString(
+        "default",
+        {
+            month: "long",
+            year: "numeric",
+        }
+    );
+
+    const currentMonthIndex =
+        currentDate.getMonth();
+
+    const currentYear =
+        currentDate.getFullYear();
+
+    // PREVIOUS MONTH
+
+    const handlePrevMonth = () => {
+
+        setCurrentDate(
+            new Date(
+                currentYear,
+                currentMonthIndex - 1
+            )
+        );
+    };
+
+    // NEXT MONTH
+
+    const handleNextMonth = () => {
+
+        if (
+            currentMonthIndex ===
+            today.getMonth()
+
+            &&
+
+            currentYear ===
+            today.getFullYear()
+        ) {
+            return;
+        }
+
+        setCurrentDate(
+            new Date(
+                currentYear,
+                currentMonthIndex + 1
+            )
+        );
+    };
+
+    // CURRENT MONTH EXPENSES
+
+    const expenseTransactions = transactions.filter(
+        (item) => {
+
+            const transactionDate =
+                new Date(item.date);
+
+            return (
+                item.type === "expense" &&
+                transactionDate.getMonth() === currentMonthIndex &&
+                transactionDate.getFullYear() === currentYear
+            );
+        }
+    );
+
+    // TOTAL EXPENSE
+
+    const totalExpense = expenseTransactions.reduce(
+        (total, item) =>
+            total + item.amount,
+        0
+    );
+
+    // CATEGORY TOTALS
+
+    const categoryTotals = {};
+
+    expenseTransactions.forEach(
+        (item) => {
+
+            if (categoryTotals[item.category]) {
+
+                categoryTotals[item.category] += item.amount;
+
+            } else {
+
+                categoryTotals[item.category] = item.amount;
+            }
+        }
+    );
+
+    // CHART DATA
+
+    const chartData =
+        Object.entries(
+            categoryTotals
+        ).map(([name, value]) => ({
+            name,
+            value,
+        }));
+
+    // TREND DATA
+
+    const trendData = [];
+
+    for (let i = 5; i >= 0; i--) {
+
+        const date = new Date(
+            currentYear,
+            currentMonthIndex - i
+        );
+
+        const month =
+            date.toLocaleString(
+                "default",
+                {
+                    month: "short",
+                }
+            );
+
+        const year =
+            date.getFullYear();
+
+        const monthIndex =
+            date.getMonth();
+
+        const monthlyExpense =
+            transactions
+                .filter((item) => {
+
+                    const transactionDate =
+                        new Date(item.date);
+
+                    return (
+                        item.type ===
+                        "expense"
+
+                        &&
+
+                        transactionDate.getMonth()
+                        === monthIndex
+
+                        &&
+
+                        transactionDate.getFullYear()
+                        === year
+                    );
+                })
+
+                .reduce(
+                    (total, item) =>
+                        total + item.amount,
+                    0
+                );
+
+        trendData.push({
+            month:
+                month.toUpperCase(),
+            amount:
+                monthlyExpense,
+        });
+    }
+
+    // COLORS
+
+    const COLORS = [
+        "#111111",
+        "#6b7280",
+        "#9ca3af",
+        "#d1d5db",
+        "#4b5563",
+    ];
+
     return (
+
         <div className={styles.container}>
+
             {/* Header */}
 
             <Header title="Financial Serenity" />
@@ -11,118 +203,90 @@ const Analytics = () => {
             {/* Month */}
 
             <div className={styles.monthSection}>
-                <button>{"<"}</button>
+
+                <button
+                    onClick={handlePrevMonth}
+                >
+                    {"<"}
+                </button>
 
                 <div>
+
                     <p>CURRENT PERIOD</p>
 
-                    <h2>October 2023</h2>
+                    <h2>{currentMonth}</h2>
+
                 </div>
 
-                <button>{">"}</button>
+                <button
+                    onClick={handleNextMonth}
+
+                    disabled={
+                        currentMonthIndex ===
+                        today.getMonth()
+
+                        &&
+
+                        currentYear ===
+                        today.getFullYear()
+                    }
+                >
+                    {">"}
+                </button>
+
             </div>
 
             {/* Total Expenditure */}
 
-            <div className={styles.totalCard}>
-                <div className={styles.leftBorder}></div>
-
-                <div>
-                    <p>TOTAL EXPENDITURE</p>
-
-                    <h2>$4,280.50</h2>
-                </div>
-
-                <span>
-                    ↘ 12% less than September
-                </span>
-            </div>
+            <TotalExpenseCard totalExpense={totalExpense} />
 
             {/* Breakdown */}
 
-            <div className={styles.breakdownSection}>
-                {/* Left */}
+            {
+                chartData.length > 0 ? (
 
-                <div className={styles.chartCard}>
-                    <p>SPENDING BREAKDOWN</p>
+                    <div
+                        className={
+                            styles.breakdownSection
+                        }
+                    >
 
-                    <div className={styles.circle}>
-                        <h2>40%</h2>
+                        {/* Chart */}
 
-                        <span>HOUSING</span>
-                    </div>
-                </div>
+                        <AnalyticsChart
+                            chartData={chartData}
+                            COLORS={COLORS}
+                        />
 
-                {/* Right */}
+                        {/* Category List */}
 
-                <div className={styles.categoryList}>
-                    <div className={styles.categoryItem}>
-                        <div>
-                            <span className={styles.black}></span>
+                        <CategoryList
+                            chartData={chartData}
+                            COLORS={COLORS}
+                        />
 
-                            Housing
-                        </div>
-
-                        <p>$1,712.20</p>
-                    </div>
-
-                    <div className={styles.categoryItem}>
-                        <div>
-                            <span className={styles.green}></span>
-
-                            Food & Dining
-                        </div>
-
-                        <p>$1,070.12</p>
                     </div>
 
-                    <div className={styles.categoryItem}>
-                        <div>
-                            <span className={styles.gray}></span>
+                ) : (
 
-                            Transportation
-                        </div>
+                    <div
+                        className={
+                            styles.emptyState
+                        }
+                    >
 
-                        <p>$642.08</p>
+                        No Transactions Found
+
                     </div>
-
-                    <div className={styles.categoryItem}>
-                        <div>
-                            <span className={styles.light}></span>
-
-                            Lifestyle & Misc
-                        </div>
-
-                        <p>$856.10</p>
-                    </div>
-
-                    <button className={styles.reportBtn}>
-                        VIEW DETAILED REPORT
-                    </button>
-                </div>
-            </div>
+                )
+            }
 
             {/* Trend */}
 
-            <div className={styles.trendSection}>
-                <p>6-MONTH TREND</p>
+            <TrendChart
+                trendData={trendData}
+            />
 
-                <div className={styles.trendBox}>
-                    <div>MAY</div>
-
-                    <div>JUN</div>
-
-                    <div>JUL</div>
-
-                    <div>AUG</div>
-
-                    <div>SEP</div>
-
-                    <div className={styles.activeMonth}>
-                        OCT
-                    </div>
-                </div>
-            </div>
         </div>
     );
 };

@@ -1,8 +1,8 @@
 import styles from "./CategoryGrid.module.css";
 
-import { expenseCategories } from "../Categories/expenseCategories";
+import { expenseCategories } from "../../CategoryItem/expenseCategories";
 
-import { incomeCategories } from "../Categories/incomeCategories";
+import { incomeCategories } from "../../CategoryItem/incomeCategories";
 
 const CategoryGrid = ({
     selectedCategory,

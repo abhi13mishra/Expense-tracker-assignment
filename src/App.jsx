@@ -3,7 +3,7 @@ import Dashboard from "./pages/Dashboard/Dashboard"
 import Transactions from "./pages/Transactions/Transactions"
 import AddTransaction from "./pages/AddTransaction/AddTransaction"
 import Analytics from "./pages/Analytics/Analytics"
-import Navbar from "./components/Navbar/Navbar"
+import Navbar from "./components/CommonComponents/Navbar/Navbar"
 import Profile from "./pages/Profile/Profile"
 function App() {
   return (

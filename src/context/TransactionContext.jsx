@@ -1,56 +1,46 @@
-import {
-    createContext,
-    useEffect,
-    useState,
-} from "react";
+import { createContext, useEffect, useState } from "react";
 
-import { transactions as initialData }
-    from "../data/data";
+export const TransactionContext = createContext();
 
-export const TransactionContext =
-    createContext();
+const TransactionProvider = ({ children }) => {
 
-const TransactionProvider = ({
-    children,
-}) => {
+    const [transactions, setTransactions] = useState(() => {
+        const savedTransactions = localStorage.getItem(
+            "transactions"
+        );
 
-    const [transactions, setTransactions] =
-        useState(() => {
-
-            const savedTransactions =
-                localStorage.getItem(
-                    "transactions"
-                );
-
-            return savedTransactions
-                ? JSON.parse(savedTransactions)
-                : initialData;
-        });
+        return savedTransactions
+            ? JSON.parse(savedTransactions)
+            : [];
+    });
 
     useEffect(() => {
         localStorage.setItem(
             "transactions",
-            JSON.stringify(transactions)
+
+            JSON.stringify(
+                transactions
+            )
         );
+
     }, [transactions]);
 
-    // ADD
+    // ADD TRANSACTION
 
     const addTransaction = (newTransaction) => {
-
         setTransactions((prev) => [
             newTransaction,
             ...prev,
         ]);
     };
 
-    // DELETE
+    // DELETE TRANSACTION
 
     const deleteTransaction = (id) => {
-
         const filtered =
             transactions.filter(
-                (item) => item.id !== id
+                (item) =>
+                    item.id !== id
             );
 
         setTransactions(filtered);

@@ -2,9 +2,9 @@ import { useContext } from "react";
 
 import styles from "./Dashboard.module.css";
 
-import Header from "../../components/Header/Header";
+import Header from "../../components/CommonComponents/Header/Header";
 
-import BalanceCard from "../../components/BalanceCard/BalanceCard";
+import BalanceCard from "../../components/DashboardComponents/BalanceCard/BalanceCard";
 
 import TransactionCard from "../../components/TransactionCard/TransactionCard";
 
